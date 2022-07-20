@@ -1,6 +1,7 @@
 import React from "react";
 import {UserLogin} from "../actions/user_login";
-import {new_venda} from "../actions/venda";
+import {venda_new} from "../actions/venda";
+import {produto_new } from "../actions/produto";
 import { Button } from "../component/button";
 
 export const Home = () => {
@@ -10,8 +11,7 @@ export const Home = () => {
   };
 
   const button_test_2 = () => {
-    console.log("button_test");
-    new_venda("cafe",10,30,10);
+    produto_new("cafe");
   };
 
   return (
