@@ -24,5 +24,12 @@ export const endpoints = {
 
 export const api_links = {
   BACKEND: "http://localhost:8000",
-  LOCAL: "http://localhost:1234"
+  FRONTEND: "http://localhost:1234"
 }
+
+export const headers = {
+  headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+  },
+};

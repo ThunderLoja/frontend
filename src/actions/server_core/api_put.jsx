@@ -1,19 +1,20 @@
 import axios from 'axios';
-import { api_links } from "./endpoint";
+import { api_links, headers } from "./endpoint";
+
+/**
+ * @brief Put data to server.
+ *
+ * @param endpoint_name Title to the data location in the API.
+ * @param data data to send.
+ *
+ * @returns Data received from server.
+ */
 
 export const ApiPut = async (endpoint_name, data) => {
     const link_api = api_links.BACKEND + '/' + endpoint_name;
 
-    const headers = {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-    };
-
     try {
         await axios.put(link_api, data, headers).then(response => { 
-            console.log("respota certo: \n")
             console.log(response.data);
             return response 
         });
