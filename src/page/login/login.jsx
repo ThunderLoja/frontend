@@ -2,12 +2,16 @@ import React from "react";
 import "./login.css";
 import logo from "../../data/logo.png"
 import { Route } from 'react-router-dom'
-
+// import { user_put_login } from "../../actions/login"
 
 export const LoginPage = () => {
   const authentication_request = () => {
     const id = document.getElementById("id_login_page").value
     const key = document.getElementById("key_login_page").value
+    console.log(typeof(parseInt(id)))
+    console.log(key)
+    // console.log(user_put_login(parseInt(id), key))
+
   }
   return (
     <div className="login_bg">
@@ -44,6 +48,7 @@ export const LoginPage = () => {
             verticalAlign: "center"
             }} onClick={()=>{ 
 
+              authentication_request()
               //if(autenticado){
                 history.push('/') 
               //} else {

@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "react-dom";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { Navigation } from './components/Navigation';
+// import { Navigation } from './components/Navigation';
 
 import { LoginPage } from "./page/login/login";
 import { Home } from "./page/home/home";
@@ -12,7 +12,6 @@ import "./index.css";
 
 const App = () => {
     return(
-
     <BrowserRouter>
         <Switch>
           <Route path="/login" >
