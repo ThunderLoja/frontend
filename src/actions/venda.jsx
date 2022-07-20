@@ -4,11 +4,15 @@ import { endpoints } from "./server_core/endpoint";
 
 let id_counter = 0;
 
-export const venda_new = (nome, preco, quantidade_dispo, quantidade_vendida) => {
-    id_counter += 1;
+export const venda_get_all = async () => {
+  const endp = endpoints.VENDA
+  return await ApiGet(endp)
+}
+
+export const venda_post_new = async (id, nome, preco, quantidade_dispo, quantidade_vendida) => {
     endp  = endpoints.VENDA_NOVO
     data = {
-        id: id_counter,
+        id: id,
         name: nome,
         price: preco,
         quantity_available: quantidade_dispo,

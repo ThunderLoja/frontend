@@ -1,21 +1,21 @@
 import React from "react";
-import {UserLogin} from "../actions/user_login";
-import {venda_new} from "../actions/venda";
-import {produto_new,produto_all } from "../actions/produto";
+import {user_put_login} from "../actions/login";
+import {venda_post_new} from "../actions/venda";
+import {produto_post_new,produto_get_all } from "../actions/produto";
 import { Button } from "../component/button";
 
 export const Home = () => {
   const button_test = () => {
     console.log("button_test");
-    UserLogin(1,"12345");
+    user_put_login(1,"12345");
   };
 
   const button_test_2 = () => {
-    produto_new("cafe");
+    produto_post_new(0, "cafe", 123, "a", "a", 20);
   };
 
   const button_test_3 = () => {
-    produto_all();
+    produto_get_all();
   };
 
   return (

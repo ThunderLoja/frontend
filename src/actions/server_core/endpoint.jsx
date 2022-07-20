@@ -6,7 +6,8 @@ export const endpoints = {
     CLIENTE_NOVO: 'cliente/novo',
     CLIENTE_ATUALIZAR: 'cliente/atualizar',
 
-    PRODUTO_TODOS: 'produto/disponiveis',
+    PRODUTO_TODOS: 'produto/todos',
+    PRODUTO_DISPONIVEL: 'produto/disponiveis',
     PRODUTO: 'produto',
     PRODUTO_NOVO: 'produto/novo',
     PRODUTO_ATUALIZAR: 'produto/atualizar',
