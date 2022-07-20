@@ -7,11 +7,11 @@ import { Button } from "../component/button";
 export const Home = () => {
   const button_test = () => {
     console.log("button_test");
-    user_put_login(1,"12345");
+    user_put_login(1,"senha1");
   };
 
   const button_test_2 = () => {
-    produto_post_new(0, "cafe", 123, "a", "a", 20);
+    produto_post_new(0, "string", 0, "string", "string", 0);
   };
 
   const button_test_3 = () => {

@@ -23,14 +23,14 @@ export const produto_get_search = async (id) => {
 export const produto_post_new = async (id, name, price, description, category, quantity) => {
     const endp  = endpoints.PRODUTO_NOVO
     const data = {
-        id: id,
-        name: name,
-        price: price,
-        description: description,
-        category: category,
-        quantity: quantity
+        // "id": id,
+        "name": name,
+        "price": price,
+        "description": description,
+        "category": category,
+        "quantity": quantity
       }
-      ApiPost(endp, data)
+      await ApiPost(endp, data)
 }
 
 

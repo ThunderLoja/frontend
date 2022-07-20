@@ -8,7 +8,7 @@ export const cliente_get_all = async () => {
     return await ApiGet(endp)
 }
 
-export const cliente_get_get_search = async (cpf) => {
+export const cliente_get_search = async (cpf) => {
     const endp = endpoints.CLIENTE+"/"+cpf
     return await ApiGet(endp)
 }

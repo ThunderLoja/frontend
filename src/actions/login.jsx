@@ -3,11 +3,11 @@ import { ApiPut } from "./server_core/api_put";
 import { endpoints } from "./server_core/endpoint";
 
 export const user_put_login = async (id,pass) => {
-    let user_endepoint = endpoints.USER;
-    let data = {
-        id : id,
-        senha: pass
+    const user_endpoint = endpoints.USER;
+    const data = {
+        "id": id,
+        "password": pass
     }
 
-    await ApiPut(user_endepoint+"/",data);
+    return await ApiPut(user_endpoint,data);
 }

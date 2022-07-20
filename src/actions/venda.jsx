@@ -18,5 +18,5 @@ export const venda_post_new = async (id, nome, preco, quantidade_dispo, quantida
         quantity_available: quantidade_dispo,
         quantity_sold: quantidade_vendida
       }
-      ApiPost(endp,data)
+      await ApiPost(endp,data)
 }
