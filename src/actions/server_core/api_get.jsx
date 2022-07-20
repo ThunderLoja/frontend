@@ -10,25 +10,19 @@ import { api_links } from "./endpoint";
  * @returns Data received from server.
  */
 
-export const ApiGet = async (endpoint_name, data) => {
+export const ApiGet = async (endpoint_name) => {
     const link = api_links.BACKEND + '/' + endpoint_name;
 
     let headers = {
         headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
+            accept: 'application/json',
         },
     };
 
     try {
-        axios.get(link,{
-            params: {
-                ...headers,
-                ...data
-            }
-        }).then(response => { 
-            console.log("foi");
-            console.log(response.data); 
+        await axios.get(link,headers).then(response => { 
+            console.log(response.data);
+            return response 
         });
     } catch (error) {
         console.log(error.response);

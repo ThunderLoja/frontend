@@ -1,5 +1,5 @@
 export const endpoints = {
-    USER: "user",
+    USER: "login",
 
     CLIENTE_TODOS: 'cliente/todos',
     CLIENTE: 'cliente',

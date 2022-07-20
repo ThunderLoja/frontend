@@ -17,3 +17,8 @@ export const produto_new = (nome) => {
       }
       ApiPost(endp,data)
 }
+
+export const produto_all = () => {
+    endp  = endpoints.PRODUTO_TODOS
+    return ApiGet(endp,data)
+}
