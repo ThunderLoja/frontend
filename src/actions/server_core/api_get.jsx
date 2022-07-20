@@ -1,5 +1,6 @@
 import axios from 'axios';
- 
+import { api_links } from "./endpoint";
+
 /**
  * @brief Get data from server.
  *
@@ -10,8 +11,7 @@ import axios from 'axios';
  */
 
 export const ApiGet = async (endpoint_name, data) => {
-    const api = process.env.API_ENDPOINT
-    const link = api + '/' + endpoint_name;
+    const link = api_links.BACKEND + '/' + endpoint_name;
 
     let headers = {
         headers: {

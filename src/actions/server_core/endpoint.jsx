@@ -20,3 +20,8 @@ export const endpoints = {
     VENDA_NOVO: 'venda',
     VENDA_ATUALIZAR: 'venda',
   };
+
+export const api_links = {
+  BACKEND: "http://localhost:8000",
+  LOCAL: "http://localhost:1234"
+}
