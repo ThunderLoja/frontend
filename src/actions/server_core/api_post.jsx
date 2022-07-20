@@ -15,21 +15,26 @@ export const ApiPost = async (endpoint_name, data) => {
     console.log(link_api)
 
     let headers = {
-
         headers: {
             'accept': 'application/json',
             'Content-Type': 'application/json',
-            // "Access-Control-Allow-Origin": "http://localhost:1234/",
-            // "Access-Control-Allow-Methods": "POST"
         },
     };
 
     try {
-        const res = await axios.post(link_api, data, headers);
-        console.log(res.data)
-        return res;
+        await axios.post(link_api, data, headers).then(response => { 
+            console.log("respota certo: \n")
+            console.log(response.data);
+            return response 
+        });
     } catch (error) {
+        console.log("respota erro: \n")
         console.log(error.response);
     }
     return null;
 };
+
+// header := w.Header()
+// header.Add("Access-Control-Allow-Origin", "*")
+// header.Add("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS")
+// header.Add("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With")

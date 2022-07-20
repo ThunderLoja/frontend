@@ -16,6 +16,7 @@ export const ApiGet = async (endpoint_name) => {
     let headers = {
         headers: {
             accept: 'application/json',
+            'Content-Type': 'application/json',
         },
     };
 
