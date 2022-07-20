@@ -27,6 +27,7 @@ export const ApiGet = async (endpoint_name, data) => {
                 ...data
             }
         }).then(response => { 
+            console.log("foi");
             console.log(response.data); 
         });
     } catch (error) {
