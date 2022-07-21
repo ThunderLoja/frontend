@@ -11,6 +11,7 @@ export const ReaVendaPage = () => {
     const [produto_escolhido, setProdutoEscolhido] = useState();
     const [clientes, setClientes] = useState([]); 
     const [produtos, setProdutos] = useState([]); 
+    const [total, setTotal] = useState(0);
 
     useEffect(() => {
         // vai vir do back
@@ -19,16 +20,19 @@ export const ReaVendaPage = () => {
                 id: 1,
                 nome: "Maçã",
                 preco: 1.95,
+                estoque: 7
             },
             {
                 id: 2,
                 nome: "Carro bonito",
                 preco: 100000000.95,
+                estoque: 2
             },
             {
                 id: 3,
                 nome: "outra Maçã",
                 preco: 1.95,
+                estoque: 5
             }
     
         ];
@@ -57,7 +61,7 @@ export const ReaVendaPage = () => {
     }, []);
     //const [item, setItem] = useState(1);
 
-
+    
 
 
 
@@ -123,13 +127,17 @@ export const ReaVendaPage = () => {
                             for (let j = 0; j < new_item.length; j++) {
                                 if (new_item[j].id === produto_escolhido.id) {
                                     // new_item[j] = [...new_item[j], {...produto_escolhido, quantidade: 1}];
-                                    new_item[j].quantidade += 1;
+                                    if (new_item[j].quantidade < new_item[j].estoque) {
+                                        new_item[j].quantidade += 1;
+                                        setTotal(total + new_item[j].preco);
+                                    }
                                     console.log(new_item);
                                     setItem(new_item);
                                     return;
                                 }
                             }
                             new_item = [...new_item, {...produto_escolhido, quantidade: 1}];
+                            setTotal(total + produto_escolhido.preco);
                             console.log(new_item);
                             setItem(new_item);
                             //lista_produtos_escolhidos.push(produto_escolhido);
@@ -177,9 +185,12 @@ export const ReaVendaPage = () => {
                                 </TableBody>
                             </Table>    
                         </TableContainer>
-                        {/* <Table data={item}/> */}
 
                     </div>
+                    <div>
+                        <h3>Total: R$ {total.toFixed(2)}</h3>
+                    </div>
+                    
                     <div>
                         Descrição:
                         <input className="input_text" type="text"/>
