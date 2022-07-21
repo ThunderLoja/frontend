@@ -6,7 +6,7 @@ import { Route, Link } from 'react-router-dom'
 import { useState } from "react";
 
 export const ReaVendaPage = () => {
-    const [item, setItem] = useState([]);
+    const [itens, setItens] = useState([]);
     const [produto_escolhido, setProdutoEscolhido] = useState();
     const [clientes, setClientes] = useState([]); 
     const [produtos, setProdutos] = useState([]); 
@@ -121,7 +121,7 @@ export const ReaVendaPage = () => {
                         
                         verticalAlign: "center"
                         }} onClick={()=>{
-                            let new_item = [...item];
+                            let new_item = [...itens];
                             for (let j = 0; j < new_item.length; j++) {
                                 if (new_item[j].id === produto_escolhido.id) {
                                     if (new_item[j].quantidade < new_item[j].estoque) {
@@ -129,14 +129,14 @@ export const ReaVendaPage = () => {
                                         setTotal(total + new_item[j].preco);
                                     }
                                     console.log(new_item);
-                                    setItem(new_item);
+                                    setItens(new_item);
                                     return;
                                 }
                             }
                             new_item = [...new_item, {...produto_escolhido, quantidade: 1}];
                             setTotal(total + produto_escolhido.preco);
                             console.log(new_item);
-                            setItem(new_item);
+                            setItens(new_item);
                         }}>
                         Adicionar
                     </button>
@@ -161,7 +161,7 @@ export const ReaVendaPage = () => {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {item.map((i) => (
+                                    {itens.map((i) => (
                                         <TableRow key={i.id}>
                                             <TableCell>
                                                 {i.nome}
@@ -208,10 +208,10 @@ export const ReaVendaPage = () => {
                                 //seller_id: int,
                                 itens: []
                             };
-                            for (let i = 0; i < item.length; i++) {
+                            for (let i = 0; i < itens.length; i++) {
                                 new_sale_data.itens.push({
-                                    product_id: item[i].id,
-                                    quantity_sold: item[i].quantidade,
+                                    product_id: itens[i].id,
+                                    quantity_sold: itens[i].quantidade,
                                 });
                             }
 
