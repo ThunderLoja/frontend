@@ -163,18 +163,6 @@ export const Home = () => (
                 }}>
                     Consultar Cliente
                 </button>
-
-                <button 
-                class="bt" 
-                style={{
-                verticalAlign: "center"
-                }} onClick={()=>{
-                    const cookies = new Cookies(); 
-
-                    console.log(cookies.get('user_id'))
-                }}>
-                    teste var global
-                </button>
             </div>
         </div>
         
