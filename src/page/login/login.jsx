@@ -4,6 +4,8 @@ import logo from "../../data/logo.png"
 import { Route } from 'react-router-dom'
 import { user_put_login } from "../../actions/login"
 
+import Cookies from 'universal-cookie';
+
 export const LoginPage = () => {
   const authentication_request = async () => {
     const id = document.getElementById("id_login_page").value
@@ -11,9 +13,12 @@ export const LoginPage = () => {
     const values = await user_put_login(parseInt(id), key).then((response) => {
       return response
     })
-    console.log(typeof(parseInt(id)))
-    console.log(key)
-    console.log(values)
+
+    if (values !== null) {
+      const cookies = new Cookies();
+      cookies.set('user_id', values.data.id, { path: '/' });
+    }
+
     return values == null ? false : true;
 
   }

@@ -5,6 +5,8 @@ import { Table, Paper, TableContainer, TableHead, TableRow, TableCell, TableBody
 import fundo from "../../data/fundo.png"
 import { Route, Link } from 'react-router-dom'
 
+import { venda_get_report } from "../../actions/venda" 
+
 
 export const ConVendaPage = () => {
     const [data_inicial, setDataInicial] = useState(null);
@@ -96,34 +98,12 @@ return (
 
                         verticalAlign: "center"
                         }} onClick={()=>{ 
-
-                            // TODO: usar as datas para pegar coisas do back
-                            const relatorio_back = [
-                                {
-                                    id: 1,
-                                    name: "Maçã",
-                                    price: 1.9,
-                                    quantity_available: 5,
-                                    quantity_sold: 10,
-                                },
-                                {
-                                    id: 2,
-                                    name: "Carro bonito",
-                                    price: 1000.95,
-                                    quantity_available: 2,
-                                    quantity_sold: 6,
-                                },
-                                {
-                                    id: 3,
-                                    name: "Outra Maçã",
-                                    price: 1.95,
-                                    quantity_available: 4,
-                                    quantity_sold: 15,
+                            (
+                                async () => {
+                                    const relatorio_back = await venda_get_report(data_inicial, data_final);
+                                    setRelatorio(relatorio_back.data)
                                 }
-                            ];
-
-                            setRelatorio(relatorio_back)
-                            
+                            )()
                         }}>
                         Consultar
                     </button>

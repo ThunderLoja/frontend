@@ -7,15 +7,15 @@ export const venda_get_all = async () => {
   return await ApiGet(endp)
 }
 
-export const venda_get_report = async (start_date, end_date) => {
+export const venda_get_report = async (start, end) => {
   let query_string = ""
 
-  if (start_date != null && end_date != null) {
-    query_string = `?start_date=${start_date}&end_date=${end_date}`
-  } else if (start_date != null) {
-    query_string = `?start_date=${start_date}`
-  } else if (end_date != null) {
-    query_string = `?end_date=${end_date}`
+  if (start != null && end != null) {
+    query_string = `?start=${start}&end=${end}`
+  } else if (start != null) {
+    query_string = `?start=${start}`
+  } else if (end != null) {
+    query_string = `?end=${end}`
   }
 
   const endp = endpoints.VENDA_RELATORIO + query_string

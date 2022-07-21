@@ -4,6 +4,8 @@ import "./home.css"
 import fundo from "../../data/fundo.png"
 import { Route, Link } from 'react-router-dom'
 
+import Cookies from 'universal-cookie';
+
 
 export const Home = () => (
     <Route render ={({history})=>(

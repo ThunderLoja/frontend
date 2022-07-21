@@ -29,7 +29,7 @@ export const ConCliPage = () => {
                 <h1 className="title">Consultar clientes</h1>
 
                 <button
-                    class="bt_logout"
+                    className="bt_logout"
                     style={{
                     verticalAlign: "center"
                     }} onClick={()=>{
