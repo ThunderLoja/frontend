@@ -10,6 +10,13 @@ body {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
   }
 
+  table, th, td {
+    border: 1px solid black;
+   }
+   td, th{
+    padding: 5px;
+   }
+
   div{
     display: flex;
     }

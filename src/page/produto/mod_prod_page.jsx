@@ -4,7 +4,7 @@ import React from "react";
 import fundo from "../../data/fundo.png"
 import { Route, Link } from 'react-router-dom'
 
-export const CadProdPage = () => {
+export const ModProdPage = () => {
     return (
     <Route render ={({history})=>(
         <div className="home_bg">
@@ -33,6 +33,11 @@ export const CadProdPage = () => {
                         Dados
                     </h3>
                     
+                    <div >
+                        ID:
+                        <input className="input_text" type="text"/>
+                    </div>
+
                     <div >
                         Nome:
                         <input className="input_text" type="text"/>

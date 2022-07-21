@@ -4,7 +4,7 @@ import "./vend.css"
 import fundo from "../../data/fundo.png"
 import { Route, Link } from 'react-router-dom'
 
-export const CadVendPage = () => {
+export const CadVendePage = () => {
     return (
     <Route render ={({history})=>(
         <div className="home_bg">
@@ -32,53 +32,38 @@ export const CadVendPage = () => {
                     <h3>
                         Dados
                     </h3>
-                    <div>
-                        Nome:
-                        <input
-                            type="text"
-                        />
+                    <div className="input_text">
+                        <div> Nome: </div>
+                        <input  type="text"/>
                     </div>
-                    <div>
+                    <div >
                         C.P.F.:
-                        <input
-                            type="text"
-                        />
+                        <input className="input_text" type="text"/>
                     </div>
                     <div>
                         Salário:
-                        <input
-                            type="text"
-                        />
+                        <input className="input_text" type="text"/>
                     </div>
                     <div>
                         Admissão:
-                        <input
-                            type="text"
-                        />
+                        <input className="input_text" type="text"/>
                     </div>
                     <div>
                         Cargo:
-                        <input
-                            type="text"
-                        />
+                        <input className="input_text" type="text"/>
                     </div>
                     <div>
                         Gerente:
-                        <input
-                            type="text"
-                        />
+                        <input className="input_text" type="text"/>
                     </div>
                     <div>
                         Senha:
-                        <input
-                            type="text"
-                        />
+                        <input className="input_text" type="text"/>
                     </div>
                     <button 
                         className="bt_cad_vend" 
                         style={{
-                        width: 80,
-                        height: 50,
+
                         verticalAlign: "center"
                         }} onClick={()=>{ 
                             history.push('/') 

@@ -95,8 +95,8 @@ body {
     .bt_cad_vend{
       border-radius: 30;
       font-size: 20px;
-      width: 60%;
-      height: 30%;
+      width: 30%;
+      height: 10%;
       color: white;
       background-Color: #011749;
     }
@@ -124,8 +124,11 @@ body {
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      background-color: red;
       padding-bottom: 10%;
       width: 50%;
       height:100%;
+    }
+
+    .input_text {
+      background-color: aliceblue;
     }

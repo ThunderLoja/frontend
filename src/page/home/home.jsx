@@ -41,7 +41,7 @@ export const Home = () => (
                 verticalAlign: "center"
                 }} onClick={()=>{ 
 
-                    history.push('/') 
+                    history.push('/rea_venda') 
                 }}>
                     Realizar Venda
                 </button>
@@ -54,7 +54,7 @@ export const Home = () => (
 
                     history.push('/') 
                 }}>
-                    Consultar Venda
+                    Relatório de Vendas
                 </button>
             </div>
             <div className="coluna_vendedores">
@@ -83,7 +83,7 @@ export const Home = () => (
                 verticalAlign: "center"
                 }} onClick={()=>{ 
 
-                    history.push('/') 
+                    history.push('/con_vend') 
                 }}>
                     Consultar Vendedores
                 </button>
@@ -104,7 +104,7 @@ export const Home = () => (
                 verticalAlign: "center"
                 }} onClick={()=>{ 
 
-                    history.push('/') 
+                    history.push('/cad_prod') 
                 }}>
                     Cadastrar Produto
                 </button>
@@ -115,9 +115,20 @@ export const Home = () => (
                 verticalAlign: "center"
                 }} onClick={()=>{ 
 
-                    history.push('/') 
+                    history.push('/con_prod') 
                 }}>
                     Consultar Estoque
+                </button>
+
+                <button 
+                class="bt" 
+                style={{
+                verticalAlign: "center"
+                }} onClick={()=>{ 
+
+                    history.push('/mod_prod') 
+                }}>
+                    Modificar Produto
                 </button>
             </div>
             <div className="coluna_clientes">
@@ -135,7 +146,7 @@ export const Home = () => (
                 verticalAlign: "center"
                 }} onClick={()=>{ 
 
-                    history.push('/') 
+                    history.push('/cad_cli') 
                 }}>
                     Cadastrar Clientes
                 </button>
@@ -146,7 +157,7 @@ export const Home = () => (
                 verticalAlign: "center"
                 }} onClick={()=>{ 
 
-                    history.push('/') 
+                    history.push('/con_cli') 
                 }}>
                     Consultar Cliente
                 </button>
