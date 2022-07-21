@@ -1,7 +1,6 @@
 import React,{useEffect, useState} from "react";
 import { Table, Paper, TableContainer, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
 
-// import "./vend.css"
 import fundo from "../../data/fundo.png"
 import { Route, Link } from 'react-router-dom'
 import { useState } from "react";
@@ -12,9 +11,11 @@ export const ReaVendaPage = () => {
     const [clientes, setClientes] = useState([]); 
     const [produtos, setProdutos] = useState([]); 
     const [total, setTotal] = useState(0);
-
+    const [descr, setDescr] = useState("");
+    const [cliCPF, setCliCPF] = useState();
+    
     useEffect(() => {
-        // vai vir do back
+        // TODO: GET do backend
         const produtos = [
             {
                 id: 1,
@@ -37,7 +38,7 @@ export const ReaVendaPage = () => {
     
         ];
 
-                // vai vir do back
+        // TODO: GET do backend
         const clientes = [
             {
                 nome: "Vanderson",
@@ -56,12 +57,9 @@ export const ReaVendaPage = () => {
 
         setProdutoEscolhido(produtos[0]);
         setClientes(clientes);
-        setProdutos(produtos);
-
+        setProdutos(produtos); 
+        setCliCPF(clientes[0].cpf);
     }, []);
-    //const [item, setItem] = useState(1);
-
-    
 
 
 
@@ -96,10 +94,10 @@ export const ReaVendaPage = () => {
                     
                     <div style={{flexDirection:"row"}}>
                         Cliente:
-                        <select>
+                        <select onChange = {(e) => {setCliCPF(e.target.value)}}>
                             {clientes.map((element) => {
                                 return (
-                                    <option value={element.nome}>{element.nome}</option>        
+                                    <option value={element.cpf}>{element.nome} {element.cpf}</option>
                                 )
                             })};
                         </select>
@@ -126,7 +124,6 @@ export const ReaVendaPage = () => {
                             let new_item = [...item];
                             for (let j = 0; j < new_item.length; j++) {
                                 if (new_item[j].id === produto_escolhido.id) {
-                                    // new_item[j] = [...new_item[j], {...produto_escolhido, quantidade: 1}];
                                     if (new_item[j].quantidade < new_item[j].estoque) {
                                         new_item[j].quantidade += 1;
                                         setTotal(total + new_item[j].preco);
@@ -140,8 +137,6 @@ export const ReaVendaPage = () => {
                             setTotal(total + produto_escolhido.preco);
                             console.log(new_item);
                             setItem(new_item);
-                            //lista_produtos_escolhidos.push(produto_escolhido);
-                            //console.log(lista_produtos_escolhidos); 
                         }}>
                         Adicionar
                     </button>
@@ -193,7 +188,7 @@ export const ReaVendaPage = () => {
                     
                     <div>
                         Descrição:
-                        <input className="input_text" type="text"/>
+                        <input className="input_text" type="text" onChange={(e) => {setDescr(e.target.value)}}/>
                     </div>
                     
                     <button 
@@ -201,7 +196,30 @@ export const ReaVendaPage = () => {
                         style={{
 
                         verticalAlign: "center"
-                        }} onClick={()=>{ 
+                        }} onClick={()=>{
+                            const current = new Date();
+                            const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
+                            
+                            let new_sale_data = {
+                                value: total,
+                                date: date,
+                                description: descr,
+                                client_cpf: cliCPF,
+                                //seller_id: int,
+                                itens: []
+                            };
+                            for (let i = 0; i < item.length; i++) {
+                                new_sale_data.itens.push({
+                                    product_id: item[i].id,
+                                    quantity_sold: item[i].quantidade,
+                                });
+                            }
+
+
+                            console.log(new_sale_data);
+
+                            // TODO: POST para backend
+
                             history.push('/') 
                         }}>
                         Cadastrar
