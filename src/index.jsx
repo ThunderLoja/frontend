@@ -14,6 +14,7 @@ import { ConVendePage } from "./page/vendedor/con_vende_page";
 import { ConProdPage } from "./page/produto/con_prod_page";
 import { ConCliPage } from "./page/clientes/con_cli_page";
 import { ReaVendaPage } from "./page/venda/rea_venda_page";
+import { ConVendaPage } from "./page/venda/con_venda_page";
 import "./index.css";
 
 
@@ -58,6 +59,10 @@ const App = () => {
 
           <Route path="/rea_venda" >
             <ReaVendaPage/>
+          </Route>
+
+          <Route path="/con_venda" >
+            <ConVendaPage />
           </Route>
 
         </Switch>
