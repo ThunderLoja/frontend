@@ -22,7 +22,7 @@ export const CadVendePage = () => {
     <Route render ={({history})=>(
         <div className="home_bg">
             <div className="header">
-                <Link to="/">
+                <Link to="/home">
                     <h2 className="title">ThunderLoja</h2>
                 </Link>
                 <h1 className="title">Cadastrar Vendedor</h1>
@@ -33,7 +33,7 @@ export const CadVendePage = () => {
                     verticalAlign: "center"
                     }} onClick={()=>{ 
     
-                        history.push('/login') 
+                        history.push('/') 
                     }}>
                         LOGOUT
                 </button>
@@ -79,8 +79,8 @@ export const CadVendePage = () => {
 
                         verticalAlign: "center"
                         }} onClick={()=>{ 
-                            // history.push('/')
                             register_vendedor()
+                            history.push('/home')
                         }}>
                         Cadastrar
                     </button>

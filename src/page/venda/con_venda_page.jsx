@@ -15,7 +15,7 @@ return (
     <Route render ={({history})=>(
         <div className="home_bg">
             <div className="header">
-                <Link to="/">
+                <Link to="/home">
                     <h2 className="title">ThunderLoja</h2>
                 </Link>
                 <h1 className="title">Relatorio de vendas</h1>
@@ -26,7 +26,7 @@ return (
                     verticalAlign: "center"
                     }} onClick={()=>{ 
     
-                        history.push('/login') 
+                        history.push('/') 
                     }}>
                         LOGOUT
                 </button>

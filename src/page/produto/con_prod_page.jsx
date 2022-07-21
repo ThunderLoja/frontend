@@ -9,26 +9,6 @@ export const ConProdPage = () => {
     const [produtos, setProdutos] = useState([]);
     
     useEffect(() => {
-        // isso deve vir do back!!
-        // const produtos = [
-        //     {
-        //         id: 1,
-        //         name: 'Maça',
-        //         price: 1.95,
-        //         description: 'Fruta vermelha',
-        //         category: 'Fruta',
-        //         quantity: 50
-        //     },
-        //     {
-        //         id: 1,
-        //         name: 'Outra Maça',
-        //         price: 1.9,
-        //         description: 'A outra fruta vermelha',
-        //         category: 'fruta',
-        //         quantity: 49
-        //     }
-
-        // ];
 
         ( async () => {
             let produtos = await produto_get_all()
@@ -37,7 +17,6 @@ export const ConProdPage = () => {
             }
         )()
 
-        // setProdutos(produtos)
     }, []);
 
     
@@ -45,7 +24,7 @@ export const ConProdPage = () => {
     <Route render ={({history})=>(
         <div className="home_bg">
             <div className="header">
-                <Link to="/">
+                <Link to="/home">
                     <h2 className="title">ThunderLoja</h2>
                 </Link>
                 <h1 className="title">Consultar Estoque</h1>
@@ -56,7 +35,7 @@ export const ConProdPage = () => {
                     verticalAlign: "center"
                     }} onClick={()=>{ 
     
-                        history.push('/login') 
+                        history.push('/') 
                     }}>
                         LOGOUT
                 </button>

@@ -54,7 +54,7 @@ export const LoginPage = () => {
 
                 is_login_valid = await authentication_request()
                 if(is_login_valid){
-                  history.push('/') 
+                  history.push('/home') 
                 } else {
                   // mensagem de erro
                 }
