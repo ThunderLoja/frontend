@@ -1,5 +1,4 @@
 import React from "react";
-import Select from 'react-select'
 
 
 // import "./vend.css"
@@ -8,16 +7,16 @@ import { Route, Link } from 'react-router-dom'
 
 export const ReaVendaPage = () => {
 
-    // vai vir do back
-    const options = []
-      
+    
 
 
     return (
-      <select value={options}>
-        <option value="A">Apple</option>
-        <option value="B">Banana</option>
-        <option value="C">Cranberry</option>
-      </select>
+        <select>
+            <option value="grapefruit">Grapefruit</option>
+            <option value="lime">Lime</option>
+            <option selected value="coconut">Coconut</option>
+            <option value="mango">Mango</option>
+        </select>
+
     )
 };
