@@ -5,6 +5,11 @@ import fundo from "../../data/fundo.png"
 import { Route, Link } from 'react-router-dom'
 import { useState } from "react";
 
+import { cliente_get_all } from "../../actions/cliente" 
+import { produto_get_available } from "../../actions/produto" 
+
+import { user_information } from "../login/login"
+
 export const ReaVendaPage = () => {
     const [itens, setItens] = useState([]);
     const [produto_escolhido, setProdutoEscolhido] = useState();
@@ -15,50 +20,30 @@ export const ReaVendaPage = () => {
     const [cliCPF, setCliCPF] = useState();
     
     useEffect(() => {
-        // TODO: GET do backend
-        const produtos = [
-            {
-                id: 1,
-                nome: "Maçã",
-                preco: 1.95,
-                estoque: 7
-            },
-            {
-                id: 2,
-                nome: "Carro bonito",
-                preco: 100000000.95,
-                estoque: 2
-            },
-            {
-                id: 3,
-                nome: "outra Maçã",
-                preco: 1.95,
-                estoque: 5
+        (
+            async () => {
+                const produtos = await produto_get_available();
+                setProdutos(produtos.data);
             }
-    
-        ];
+        )();
 
-        // TODO: GET do backend
-        const clientes = [
-            {
-                nome: "Vanderson",
-                cpf: 12435645,
-            },
-            {
-                nome: "Greg",
-                cpf: 12435645,
-            },
-            {
-                nome: "Lucas",
-                cpf: 12435645,
-            },
+        (
+            async () => {
+                const clientes = await cliente_get_all();
+                setClientes(clientes.data);
+            }
+        )();
 
-        ]
-
-        setProdutoEscolhido(produtos[0]);
         setClientes(clientes);
-        setProdutos(produtos); 
-        setCliCPF(clientes[0].cpf);
+        setProdutos(produtos);
+        
+        if (produtos.length > 0) {
+            setProdutoEscolhido(produtos[0]);
+        }
+
+        if (clientes.length > 0) {
+            setCliCPF(clientes[0].cpf);
+        }
     }, []);
 
 
@@ -205,7 +190,7 @@ export const ReaVendaPage = () => {
                                 date: date,
                                 description: descr,
                                 client_cpf: cliCPF,
-                                //seller_id: int,
+                                seller_id: user_information,
                                 itens: []
                             };
                             for (let i = 0; i < itens.length; i++) {

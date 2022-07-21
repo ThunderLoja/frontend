@@ -4,6 +4,8 @@ import "./home.css"
 import fundo from "../../data/fundo.png"
 import { Route, Link } from 'react-router-dom'
 
+import Cookies from 'universal-cookie';
+
 
 export const Home = () => (
     <Route render ={({history})=>(
@@ -160,6 +162,18 @@ export const Home = () => (
                     history.push('/con_cli') 
                 }}>
                     Consultar Cliente
+                </button>
+
+                <button 
+                class="bt" 
+                style={{
+                verticalAlign: "center"
+                }} onClick={()=>{
+                    const cookies = new Cookies(); 
+
+                    console.log(cookies.get('user_id'))
+                }}>
+                    teste var global
                 </button>
             </div>
         </div>
