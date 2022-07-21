@@ -38,7 +38,7 @@ export const LoginPage = () => {
           <div className="input_container">
             <h3>Senha:</h3>
             <input id="key_login_page"
-              type="text"
+              type="password"
             />
           </div>
           <div className="input_container">

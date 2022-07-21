@@ -12,14 +12,15 @@ export const endpoints = {
     PRODUTO_NOVO: 'produto/novo',
     PRODUTO_ATUALIZAR: 'produto/atualizar',
 
-    VENDEDOR_TODOS: 'vendedor/disponiveis',
+    VENDEDOR_TODOS: 'vendedor/todos',
+    VENDEDOR_ATIVOS: 'vendedor/ativos',
     VENDEDOR: 'vendedor',
     VENDEDOR_NOVO: 'vendedor/novo',
     VENDEDOR_ATUALIZAR: 'vendedor/atualizar',
 
-    VENDA: 'venda',
-    VENDA_NOVO: 'venda',
-    VENDA_ATUALIZAR: 'venda',
+    VENDA_TODAS: 'venda/todas',
+    VENDA_RELATORIO: 'venda/relatorio',
+    VENDA_NOVA: 'venda/nova',
   };
 
 export const api_links = {
