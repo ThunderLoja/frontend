@@ -8,12 +8,17 @@ export const vendedor_get_all = async () => {
     return await ApiGet(endp)
 }
 
+export const vendedor_get_active = async () => {
+    const endp = endpoints.VENDEDOR_ATIVOS;
+    return await ApiGet(endp)
+}
+
 export const vendedor_get_search = async (id) => {
     const endp = endpoints.VENDEDOR+"/"+id
     return await ApiGet(endp)
 }
 
-export const vendedor_post_new = async (name, cpf, salary, admission_date, admission_date, is_active, manager_id, password) => {
+export const vendedor_post_new = async (name, cpf, salary, admission_date, is_active, manager_id, password) => {
     const endp = endpoints.VENDEDOR_NOVO;
     const data = {
         name: name,
@@ -24,16 +29,18 @@ export const vendedor_post_new = async (name, cpf, salary, admission_date, admis
         manager_id: manager_id,
         password: password
     }
+    console.log("vendedor data= \n", data)
     await ApiPost(endp, data)
 }
 
-export const vendedor_put_update = async (name, cpf, salary, admission_date, admission_date, is_active, manager_id, password) => {
+export const vendedor_put_update = async (name, cpf, salary, admission_date, colab_type, is_active, manager_id, password) => {
     const endp = endpoints.VENDEDOR_ATUALIZAR;
     const data = {
         name: name,
         cpf: cpf,
         salary: salary,
         admission_date: admission_date,
+        colab_type: colab_type,
         is_active: is_active,
         manager_id: manager_id,
         password: password

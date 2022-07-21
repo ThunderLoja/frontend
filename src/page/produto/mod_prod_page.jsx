@@ -3,16 +3,17 @@ import React from "react";
 // import "./vend.css"
 import fundo from "../../data/fundo.png"
 import { Route, Link } from 'react-router-dom'
-import { produto_post_new } from "../../actions/produto"
+import { produto_put_update } from "../../actions/produto"
 
-export const CadProdPage = () => {
-    const register_produto = async () => {
-        const name = document.getElementById("name_prod_cadastro").value
-        const valor = parseFloat(document.getElementById("valor_prod_cadastro").value)
-        const desc = document.getElementById("desc_prod_cadastro").value
-        const categoria = document.getElementById("categoria_prod_cadastro").value
-        const quantidade = parseInt(document.getElementById("quantidade_prod_cadastro").value)
-        await produto_post_new(name, valor, desc, categoria, quantidade)
+export const ModProdPage = () => {
+    const modify_produto = async () => {
+        const id = document.getElementById("id_prod_mod").value
+        const name = document.getElementById("name_prod_mod").value
+        const valor = parseFloat(document.getElementById("valor_prod_mod").value)
+        const desc = document.getElementById("desc_prod_mod").value
+        const categoria = document.getElementById("categoria_prod_mod").value
+        const quantidade = parseInt(document.getElementById("quantidade_prod_mod").value)
+        await produto_put_update(id, name, valor, desc, categoria, quantidade)
     }
 
     return (
@@ -43,25 +44,30 @@ export const CadProdPage = () => {
                         Dados
                     </h3>
                     
+                    <div>
+                        ID:
+                        <input id="id_prod_mod" className="input_text" type="number"/>
+                    </div>
+
                     <div >
                         Nome:
-                        <input id="name_prod_cadastro" type="text"/>
+                        <input id="name_prod_mod" className="input_text" type="text"/>
                     </div>
                     <div>
                         Valor:
-                        <input id="valor_prod_cadastro" type="number" step="0.01"/>
+                        <input id="valor_prod_mod" className="input_text" type="number" step="0.1"/>
                     </div>
                     <div>
                         Descrição:
-                        <input id="desc_prod_cadastro" type="text"/>
+                        <input id="desc_prod_mod" className="input_text" type="text"/>
                     </div>
                     <div>
                         Categoria:
-                        <input id="categoria_prod_cadastro" type="text"/>
+                        <input id="categoria_prod_mod" className="input_text" type="text"/>
                     </div>
                     <div>
                         Quantidade:
-                        <input id="quantidade_prod_cadastro" type="text"/>
+                        <input id="quantidade_prod_mod" className="input_text" type="number"/>
                     </div>
                     
                     <button 
@@ -70,10 +76,10 @@ export const CadProdPage = () => {
 
                         verticalAlign: "center"
                         }} onClick={()=>{ 
-                            register_produto(); 
+                            modify_produto();
                             history.push('/home');
                         }}>
-                        Cadastrar
+                        Modificar
                     </button>
                 </div>    
             </div>

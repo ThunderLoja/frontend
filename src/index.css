@@ -27,6 +27,10 @@ body {
     /* color: white; */
   }
   
+  #login {
+    background-color: black;
+  }
+
   .description {
     font-family: "Open Sans", sans-serif;
     font-weight: 400;

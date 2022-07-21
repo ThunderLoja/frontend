@@ -1,0 +1,132 @@
+body {
+    margin: 10000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+      "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+   }
+   td, th{
+    padding: 5px;
+   }
+
+  div{
+    display: flex;
+    }
+
+    h1 {
+     color:white;
+    }
+
+    .home_bg {
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+    }
+
+    .title  {
+      color: yellow;
+    }
+
+    .header {
+        flex: 2;
+        justify-content:space-between;
+        background: #011749;
+        align-items: center ;
+        padding-left:5%;
+        padding-right:5%;
+    }
+    .bt_add_prod {
+      border-radius: 30;
+      font-size: 10px;
+      width: 100%;
+      height: 100%;
+      color: white;
+      background-Color: #011749;
+    }
+    .content {
+        flex: 20;
+        background: white;
+        background-repeat: no-repeat;
+        background-position:center;
+        display:flex;
+        
+    }
+    
+    .footer {
+        flex: 1;
+        background: #011749;
+    }
+
+    .coluna_vendas{
+      padding-top: 3%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 20%;
+      flex:1;
+    }
+
+    .coluna_vendedores{
+      padding-top: 3%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 20%;
+      flex:1;
+
+    }
+
+    .coluna_produtos{
+      padding-top: 3%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 20%;
+      flex:1;
+    }
+
+    .coluna_clientes{
+      padding-top: 3%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 20%;
+      flex:1;
+
+    }
+
+    .bt{
+      border-radius: 30;
+      font-size: 20px;
+      width: 60%;
+      height: 60px;
+      color: white;
+      background-Color: #011749;
+    }
+
+    .bt_title{
+      border-radius: 30;
+      width: 60%;
+      height: 60px;
+      font-size: 25px;
+      color: yellow;
+      background-Color: #011749;
+    }
+
+    .bt_logout {
+
+      border-radius: 30;
+      width: 10%;
+      height: 40%;
+      font-size: 10px;
+      color: yellow;
+      background-Color: red;
+    }
