@@ -7,8 +7,9 @@ import { useState } from "react";
 
 import { cliente_get_all } from "../../actions/cliente" 
 import { produto_get_available } from "../../actions/produto" 
+import { venda_post_new } from "../../actions/venda" 
 
-import { user_information } from "../login/login"
+import Cookies from 'universal-cookie';
 
 export const ReaVendaPage = () => {
     const [itens, setItens] = useState([]);
@@ -22,28 +23,31 @@ export const ReaVendaPage = () => {
     useEffect(() => {
         (
             async () => {
-                const produtos = await produto_get_available();
-                setProdutos(produtos.data);
-            }
-        )();
+                await produto_get_available().then((response) => {
+                    const produtos = response.data;
 
-        (
-            async () => {
-                const clientes = await cliente_get_all();
-                setClientes(clientes.data);
+                    setProdutos(produtos);
+
+                    if (produtos.length > 0) {
+                        setProdutoEscolhido(produtos[0]);
+                    }
+                });
+                
+                await cliente_get_all().then((response) => {
+                    const clientes = response.data;
+
+                    setClientes(clientes);
+
+                    if (clientes.length > 0) {
+                        setCliCPF(clientes[0].cpf)
+                    }
+                });
             }
         )();
 
         setClientes(clientes);
-        setProdutos(produtos);
+        setProdutos(produtos);  
         
-        if (produtos.length > 0) {
-            setProdutoEscolhido(produtos[0]);
-        }
-
-        if (clientes.length > 0) {
-            setCliCPF(clientes[0].cpf);
-        }
     }, []);
 
 
@@ -82,7 +86,7 @@ export const ReaVendaPage = () => {
                         <select onChange = {(e) => {setCliCPF(e.target.value)}}>
                             {clientes.map((element) => {
                                 return (
-                                    <option value={element.cpf}>{element.nome} {element.cpf}</option>
+                                    <option value={element.cpf}>{element.name} {element.cpf}</option>
                                 )
                             })};
                         </select>
@@ -96,7 +100,7 @@ export const ReaVendaPage = () => {
                             }}>
                             {produtos.map((element, index) => {                                
                                 return (
-                                    <option key={element.id} value={element.id} tabIndex={index} >{element.nome}</option>        
+                                    <option key={element.id} value={element.id} tabIndex={index} >{element.name}</option>        
                                 )
                             })}
                         </select>
@@ -109,17 +113,17 @@ export const ReaVendaPage = () => {
                             let new_item = [...itens];
                             for (let j = 0; j < new_item.length; j++) {
                                 if (new_item[j].id === produto_escolhido.id) {
-                                    if (new_item[j].quantidade < new_item[j].estoque) {
-                                        new_item[j].quantidade += 1;
-                                        setTotal(total + new_item[j].preco);
+                                    if (new_item[j].quantity < produto_escolhido.quantity) {
+                                        new_item[j].quantity += 1;
+                                        setTotal(total + new_item[j].price);
                                     }
                                     console.log(new_item);
                                     setItens(new_item);
                                     return;
                                 }
                             }
-                            new_item = [...new_item, {...produto_escolhido, quantidade: 1}];
-                            setTotal(total + produto_escolhido.preco);
+                            new_item = [...new_item, {...produto_escolhido, quantity: 1}];
+                            setTotal(total + produto_escolhido.price);
                             console.log(new_item);
                             setItens(new_item);
                         }}>
@@ -149,16 +153,16 @@ export const ReaVendaPage = () => {
                                     {itens.map((i) => (
                                         <TableRow key={i.id}>
                                             <TableCell>
-                                                {i.nome}
+                                                {i.name}
                                             </TableCell>
                                             <TableCell>
-                                                R$ {i.preco.toFixed(2)}
+                                                R$ {i.price.toFixed(2)}
                                             </TableCell>
                                             <TableCell>
-                                                {i.quantidade}
+                                                {i.quantity}
                                             </TableCell>
                                             <TableCell>
-                                                R$ {(i.preco * i.quantidade).toFixed(2)}
+                                                R$ {(i.price * i.quantity).toFixed(2)}
                                             </TableCell>
                                         </TableRow>
                                     ))}
@@ -185,25 +189,28 @@ export const ReaVendaPage = () => {
                             const current = new Date();
                             const date = `${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`;
                             
+                            const Cookie = new Cookies();
+                            const user = Cookie.get('user_id');
+                            
                             let new_sale_data = {
                                 value: total,
                                 date: date,
                                 description: descr,
                                 client_cpf: cliCPF,
-                                seller_id: user_information,
+                                seller_id: user,
                                 itens: []
                             };
                             for (let i = 0; i < itens.length; i++) {
                                 new_sale_data.itens.push({
                                     product_id: itens[i].id,
-                                    quantity_sold: itens[i].quantidade,
+                                    quantity_sold: itens[i].quantity,
                                 });
                             }
 
 
                             console.log(new_sale_data);
 
-                            // TODO: POST para backend
+                            venda_post_new(new_sale_data);
 
                             history.push('/home') 
                         }}>

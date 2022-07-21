@@ -22,15 +22,8 @@ export const venda_get_report = async (start, end) => {
   return await ApiGet(endp)
 }
 
-export const venda_post_new = async (value, date, description, client_cpf, seller_id, itens) => {
+export const venda_post_new = async (data) => {
     endp  = endpoints.VENDA_NOVA
-    data = {
-        value: value,
-        date: date,
-        description: description,
-        client_cpf: client_cpf,
-        seller_id: seller_id,
-        itens: itens
-      }
-      await ApiPost(endp,data)
+
+    await ApiPost(endp,data)
 }
