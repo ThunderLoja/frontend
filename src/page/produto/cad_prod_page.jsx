@@ -8,7 +8,7 @@ import { produto_post_new } from "../../actions/produto"
 export const CadProdPage = () => {
     const register_produto = async () => {
         const name = document.getElementById("name_prod_cadastro").value
-        const valor = parseInt(document.getElementById("valor_prod_cadastro").value)
+        const valor = parseFloat(document.getElementById("valor_prod_cadastro").value)
         const desc = document.getElementById("desc_prod_cadastro").value
         const categoria = document.getElementById("categoria_prod_cadastro").value
         const quantidade = parseInt(document.getElementById("quantidade_prod_cadastro").value)
@@ -49,7 +49,7 @@ export const CadProdPage = () => {
                     </div>
                     <div>
                         Valor:
-                        <input id="valor_prod_cadastro" type="number"/>
+                        <input id="valor_prod_cadastro" type="number" step="0.01"/>
                     </div>
                     <div>
                         Descrição:

@@ -48,6 +48,9 @@ export const ConProdPage = () => {
                         <TableHead>
                             <TableRow>
                                 <TableCell>
+                                    ID
+                                </TableCell>
+                                <TableCell>
                                     Produto
                                 </TableCell>
                                 <TableCell>
@@ -67,6 +70,9 @@ export const ConProdPage = () => {
                         <TableBody>
                             {produtos.map((prod) => (
                                 <TableRow key={prod.id}>
+                                    <TableCell>
+                                        {prod.id}
+                                    </TableCell>
                                     <TableCell>
                                         {prod.name}
                                     </TableCell>

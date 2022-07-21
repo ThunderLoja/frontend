@@ -10,7 +10,7 @@ export const CadVendePage = () => {
     const register_vendedor = async () => {
         const name = document.getElementById("name_vendedor_cadastro").value
         const cpf = parseInt(document.getElementById("cpf_vendedor_cadastro").value)
-        const salario = parseInt(document.getElementById("salario_vendedor_cadastro").value)
+        const salario = parseFloat(document.getElementById("salario_vendedor_cadastro").value)
         const admissao = document.getElementById("admissao_vendedor_cadastro").value
         const eh_ativo = (document.getElementById("activo_vendedor_cadastro").value == "on")
         const id_maneger = parseInt(document.getElementById("maneger_id_vendedor_cadastro").value)
@@ -55,7 +55,7 @@ export const CadVendePage = () => {
                     </div>
                     <div>
                         Salário:
-                        <input id="salario_vendedor_cadastro" className="input_text" type="number"/>
+                        <input id="salario_vendedor_cadastro" className="input_text" type="number" step="0.01"/>
                     </div>
                     <div>
                         Admissão:

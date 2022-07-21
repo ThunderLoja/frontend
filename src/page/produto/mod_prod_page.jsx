@@ -3,8 +3,19 @@ import React from "react";
 // import "./vend.css"
 import fundo from "../../data/fundo.png"
 import { Route, Link } from 'react-router-dom'
+import { produto_put_update } from "../../actions/produto"
 
 export const ModProdPage = () => {
+    const modify_produto = async () => {
+        const id = document.getElementById("id_prod_mod").value
+        const name = document.getElementById("name_prod_mod").value
+        const valor = parseFloat(document.getElementById("valor_prod_mod").value)
+        const desc = document.getElementById("desc_prod_mod").value
+        const categoria = document.getElementById("categoria_prod_mod").value
+        const quantidade = parseInt(document.getElementById("quantidade_prod_mod").value)
+        await produto_put_update(id, name, valor, desc, categoria, quantidade)
+    }
+
     return (
     <Route render ={({history})=>(
         <div className="home_bg">
@@ -33,26 +44,30 @@ export const ModProdPage = () => {
                         Dados
                     </h3>
                     
-                    <div >
+                    <div>
                         ID:
-                        <input className="input_text" type="text"/>
+                        <input id="id_prod_mod" className="input_text" type="number"/>
                     </div>
 
                     <div >
                         Nome:
-                        <input className="input_text" type="text"/>
+                        <input id="name_prod_mod" className="input_text" type="text"/>
                     </div>
                     <div>
                         Valor:
-                        <input className="input_text" type="text"/>
+                        <input id="valor_prod_mod" className="input_text" type="number" step="0.1"/>
                     </div>
                     <div>
                         Descrição:
-                        <input className="input_text" type="text"/>
+                        <input id="desc_prod_mod" className="input_text" type="text"/>
                     </div>
                     <div>
                         Categoria:
-                        <input className="input_text" type="text"/>
+                        <input id="categoria_prod_mod" className="input_text" type="text"/>
+                    </div>
+                    <div>
+                        Quantidade:
+                        <input id="quantidade_prod_mod" className="input_text" type="number"/>
                     </div>
                     
                     <button 
@@ -61,9 +76,10 @@ export const ModProdPage = () => {
 
                         verticalAlign: "center"
                         }} onClick={()=>{ 
-                            history.push('/home') 
+                            modify_produto();
+                            history.push('/home');
                         }}>
-                        Cadastrar
+                        Modificar
                     </button>
                 </div>    
             </div>

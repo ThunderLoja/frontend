@@ -1,6 +1,6 @@
 import { ApiGet } from "./server_core/api_get";
 import { ApiPost } from "./server_core/api_post";
-import { ApiPut } from "./server_core/api_post";
+import { ApiPut } from "./server_core/api_put";
 import { endpoints } from "./server_core/endpoint";
 
 let id_counter = 0;
