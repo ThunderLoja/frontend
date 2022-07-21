@@ -15,7 +15,7 @@ export const CadCliPage = () => {
                 <h1 className="title">Cadastrar Cliente</h1>
                  
                 <button 
-                    class="bt_logout" 
+                    className="bt_logout" 
                     style={{
                     verticalAlign: "center"
                     }} onClick={()=>{ 

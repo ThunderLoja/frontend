@@ -4,6 +4,8 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -35,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "@mui/material": "^5.9.1",
     "@parcel/transformer-image": "2.0.0-rc.0",
     "eslint": "^6.8.0",
     "parcel": "^2.0.0-rc.0",
