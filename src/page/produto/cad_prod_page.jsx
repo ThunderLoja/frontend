@@ -6,12 +6,13 @@ import { Route, Link } from 'react-router-dom'
 import { produto_post_new } from "../../actions/produto"
 
 export const CadProdPage = () => {
-    const register_produto = () => {
+    const register_produto = async () => {
         const name = document.getElementById("name_prod_cadastro").value
-        const valor = document.getElementById("valor_prod_cadastro").value
+        const valor = parseInt(document.getElementById("valor_prod_cadastro").value)
         const desc = document.getElementById("desc_prod_cadastro").value
         const categoria = document.getElementById("categoria_prod_cadastro").value
-        await produto_post_new(name, valor, desc, categoria)
+        const cadastro = parseInt(document.getElementById("cadastro_prod_cadastro").value)
+        await produto_post_new(name, valor, desc, categoria, cadastro)
     }
 
     return (
@@ -44,19 +45,23 @@ export const CadProdPage = () => {
                     
                     <div >
                         Nome:
-                        <input className="name_prod_cadastro" type="text"/>
+                        <input id="name_prod_cadastro" type="text"/>
                     </div>
                     <div>
                         Valor:
-                        <input className="valor_prod_cadastro" type="text"/>
+                        <input id="valor_prod_cadastro" type="number"/>
                     </div>
                     <div>
                         Descrição:
-                        <input className="desc_prod_cadastro" type="text"/>
+                        <input id="desc_prod_cadastro" type="text"/>
                     </div>
                     <div>
                         Categoria:
-                        <input className="categoria_prod_cadastro" type="text"/>
+                        <input id="categoria_prod_cadastro" type="text"/>
+                    </div>
+                    <div>
+                        Cadastro:
+                        <input id="cadastro_prod_cadastro" type="text"/>
                     </div>
                     
                     <button 

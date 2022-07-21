@@ -7,10 +7,10 @@ import { Route, Link } from 'react-router-dom'
 import { cliente_post_new } from "../../actions/cliente"
 
 export const CadCliPage = () => {
-    const register_cliente = () => {
-        const name = document.getElementById("nome_cliente").value
-        const cpf = document.getElementById("cpf_cliente").value
-        await cliente_post_new(name, cpf)
+    const register_cliente = async() => {
+        const name = document.getElementById("name_client_page").value
+        const cpf = parseInt(document.getElementById("cpf_client_page").value)
+        await cliente_post_new(cpf, name)
     }
     
     return (
@@ -43,11 +43,11 @@ export const CadCliPage = () => {
                    
                     <div >
                         Nome:
-                        <input className="nome_cliente" type="text"/>
+                        <input id="name_client_page" className="nome_cliente" type="text"/>
                     </div>
                     <div>
                         C.P.F.:
-                        <input className="cpf_cliente" type="text"/>
+                        <input id="cpf_client_page" className="cpf_cliente" type="number"/>
                     </div>
                    
                     <button 
