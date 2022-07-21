@@ -20,10 +20,9 @@ export const produto_get_search = async (id) => {
     return await ApiGet(endp)
 }
 
-export const produto_post_new = async (id, name, price, description, category, quantity) => {
+export const produto_post_new = async (name, price, description, category, quantity) => {
     const endp  = endpoints.PRODUTO_NOVO
     const data = {
-        // "id": id,
         "name": name,
         "price": price,
         "description": description,
