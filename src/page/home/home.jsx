@@ -52,7 +52,7 @@ export const Home = () => (
                 verticalAlign: "center"
                 }} onClick={()=>{ 
 
-                    history.push('/') 
+                    history.push('/con_venda') 
                 }}>
                     Relatório de Vendas
                 </button>

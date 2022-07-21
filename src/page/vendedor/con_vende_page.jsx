@@ -1,28 +1,26 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
+import { Table, Paper, TableContainer, TableHead, TableRow, TableCell, TableBody } from "@mui/material";
+// import { Check, Close } from "@mui/icons-material";
 
 import fundo from "../../data/fundo.png"
 import { Route, Link } from 'react-router-dom'
-import Table from "../../component/table";
+import { vendedor_get_all } from "../../actions/vendedor"
 
 export const ConVendePage = () => {
 
-    // isso deve vir do back!!
-    let vendedores = [
-        {
-            nome: "Vanderson",
-            cpf: 123123123,
-        },
-        {
-            nome: "Greg",
-            cpf: 123123123,
-        },
-        {
-            nome: "Lucas",
-            cpf: 123123123,
-        }
+    const [vendedores, setVendedores] = useState([]); 
 
-    ]
+    useEffect( () => {
 
+        ( async () => {
+            let vendedores = await vendedor_get_all()
+            console.log(vendedores.data)
+            setVendedores(vendedores.data)
+            }
+        )()
+
+
+    }, []);
 
     
     return (
@@ -47,8 +45,59 @@ export const ConVendePage = () => {
                 
             </div>
             <div className="content_vend" style ={{backgroundImage: `url(${fundo})`, alignItems:"center", justifyContent:"center"}}>
-                <Table data={vendedores}/>
-
+                <div>
+                <TableContainer component={Paper}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>
+                                    nome
+                                </TableCell>
+                                <TableCell>
+                                    cpf
+                                </TableCell>
+                                <TableCell>
+                                    salario
+                                </TableCell>
+                                <TableCell>
+                                    Admissão
+                                </TableCell>  
+                                <TableCell>
+                                    Ativo?
+                                </TableCell>  
+                                <TableCell>
+                                    Id do gerente
+                                </TableCell>                            
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {vendedores.map((i) => (
+                                <TableRow key={i.id}>
+                                    <TableCell>
+                                        {i.name}
+                                    </TableCell>
+                                    <TableCell>
+                                        {i.cpf}
+                                    </TableCell>
+                                    <TableCell>
+                                        {i.salary}
+                                    </TableCell>
+                                    <TableCell>
+                                        {i.admission_date}
+                                    </TableCell>
+                                    <TableCell>
+                                        {/* {i.is_active  ? <CheckIcon /> : <CloseIcon />} */}
+                                        {i.is_active  ? 1 : 0}
+                                    </TableCell>
+                                    <TableCell>
+                                        {i.manager_id}
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>    
+                </TableContainer>
+                </div>
             </div>
             
             <div className="footer">
