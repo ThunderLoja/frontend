@@ -23,7 +23,7 @@ export const ConCliPage = () => {
     <Route render ={({history})=>(
         <div className="home_bg">
             <div className="header">
-                <Link to="/">
+                <Link to="/home">
                     <h2 className="title">ThunderLoja</h2>
                 </Link>
                 <h1 className="title">Consultar clientes</h1>
@@ -33,7 +33,7 @@ export const ConCliPage = () => {
                     style={{
                     verticalAlign: "center"
                     }} onClick={()=>{
-                        history.push('/login')
+                        history.push('/')
                     }}>
                         LOGOUT
                 </button>

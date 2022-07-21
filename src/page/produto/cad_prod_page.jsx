@@ -8,18 +8,18 @@ import { produto_post_new } from "../../actions/produto"
 export const CadProdPage = () => {
     const register_produto = async () => {
         const name = document.getElementById("name_prod_cadastro").value
-        const valor = parseInt(document.getElementById("valor_prod_cadastro").value)
+        const valor = parseFloat(document.getElementById("valor_prod_cadastro").value)
         const desc = document.getElementById("desc_prod_cadastro").value
         const categoria = document.getElementById("categoria_prod_cadastro").value
-        const cadastro = parseInt(document.getElementById("cadastro_prod_cadastro").value)
-        await produto_post_new(name, valor, desc, categoria, cadastro)
+        const quantidade = parseInt(document.getElementById("quantidade_prod_cadastro").value)
+        await produto_post_new(name, valor, desc, categoria, quantidade)
     }
 
     return (
     <Route render ={({history})=>(
         <div className="home_bg">
             <div className="header">
-                <Link to="/">
+                <Link to="/home">
                     <h2 className="title">ThunderLoja</h2>
                 </Link>
                 <h1 className="title">Cadastrar Produto</h1>
@@ -30,7 +30,7 @@ export const CadProdPage = () => {
                     verticalAlign: "center"
                     }} onClick={()=>{ 
     
-                        history.push('/login') 
+                        history.push('/') 
                     }}>
                         LOGOUT
                 </button>
@@ -49,7 +49,7 @@ export const CadProdPage = () => {
                     </div>
                     <div>
                         Valor:
-                        <input id="valor_prod_cadastro" type="number"/>
+                        <input id="valor_prod_cadastro" type="number" step="0.01"/>
                     </div>
                     <div>
                         Descrição:
@@ -60,8 +60,8 @@ export const CadProdPage = () => {
                         <input id="categoria_prod_cadastro" type="text"/>
                     </div>
                     <div>
-                        Cadastro:
-                        <input id="cadastro_prod_cadastro" type="text"/>
+                        Quantidade:
+                        <input id="quantidade_prod_cadastro" type="text"/>
                     </div>
                     
                     <button 
@@ -70,8 +70,8 @@ export const CadProdPage = () => {
 
                         verticalAlign: "center"
                         }} onClick={()=>{ 
-                            /*history.push('/')*/
-                            register_produto() 
+                            register_produto(); 
+                            history.push('/home');
                         }}>
                         Cadastrar
                     </button>

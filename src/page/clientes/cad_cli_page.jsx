@@ -17,7 +17,7 @@ export const CadCliPage = () => {
     <Route render ={({history})=>(
         <div className="home_bg">
             <div className="header">
-                <Link to="/">
+                <Link to="/home">
                     <h2 className="title">ThunderLoja</h2>
                 </Link>
                 <h1 className="title">Cadastrar Cliente</h1>
@@ -28,7 +28,7 @@ export const CadCliPage = () => {
                     verticalAlign: "center"
                     }} onClick={()=>{ 
     
-                        history.push('/login') 
+                        history.push('/') 
                     }}>
                         LOGOUT
                 </button>
@@ -56,8 +56,8 @@ export const CadCliPage = () => {
 
                         verticalAlign: "center"
                         }} onClick={()=>{ 
-                            /*history.push('/') */
                             register_cliente()
+                            history.push('/home')
                         }}>
                         Cadastrar
                     </button>

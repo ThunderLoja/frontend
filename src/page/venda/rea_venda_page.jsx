@@ -53,7 +53,7 @@ export const ReaVendaPage = () => {
     <Route render ={({history})=>(
         <div className="home_bg">
             <div className="header">
-                <Link to="/">
+                <Link to="/home">
                     <h2 className="title">ThunderLoja</h2>
                 </Link>
                 <h1 className="title">Registrar Venda</h1>
@@ -64,7 +64,7 @@ export const ReaVendaPage = () => {
                     verticalAlign: "center"
                     }} onClick={()=>{ 
     
-                        history.push('/login') 
+                        history.push('/') 
                     }}>
                         LOGOUT
                 </button>
@@ -205,7 +205,7 @@ export const ReaVendaPage = () => {
 
                             // TODO: POST para backend
 
-                            history.push('/') 
+                            history.push('/home') 
                         }}>
                         Cadastrar
                     </button>
