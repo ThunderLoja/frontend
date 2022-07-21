@@ -4,7 +4,20 @@ import "./vend.css"
 import fundo from "../../data/fundo.png"
 import { Route, Link } from 'react-router-dom'
 
+import { vendedor_post_new } from "../../actions/vendedor"
+
 export const CadVendePage = () => {
+    const register_vendedor = async () => {
+        const name = document.getElementById("name_vendedor_cadastro").value
+        const cpf = parseInt(document.getElementById("cpf_vendedor_cadastro").value)
+        const salario = parseInt(document.getElementById("salario_vendedor_cadastro").value)
+        const admissao = document.getElementById("admissao_vendedor_cadastro").value
+        const eh_ativo = (document.getElementById("activo_vendedor_cadastro").value == "on")
+        const id_maneger = parseInt(document.getElementById("maneger_id_vendedor_cadastro").value)
+        const senha = document.getElementById("senha_vendedor_cadastro").value
+        await vendedor_post_new(name, cpf, salario, admissao, eh_ativo, id_maneger, senha)
+    }
+
     return (
     <Route render ={({history})=>(
         <div className="home_bg">
@@ -34,31 +47,31 @@ export const CadVendePage = () => {
                     </h3>
                     <div className="input_text">
                         <div> Nome: </div>
-                        <input  type="text"/>
+                        <input  id="name_vendedor_cadastro" type="text"/>
                     </div>
                     <div >
                         C.P.F.:
-                        <input className="input_text" type="text"/>
+                        <input id="cpf_vendedor_cadastro" className="input_text" type="number"/>
                     </div>
                     <div>
                         Salário:
-                        <input className="input_text" type="text"/>
+                        <input id="salario_vendedor_cadastro" className="input_text" type="number"/>
                     </div>
                     <div>
                         Admissão:
-                        <input className="input_text" type="text"/>
+                        <input id="admissao_vendedor_cadastro" className="input_text" type="date"/>
                     </div>
                     <div>
-                        Cargo:
-                        <input className="input_text" type="text"/>
+                        Ativo?:
+                        <input id="activo_vendedor_cadastro" className="input_text" type="checkbox"/>
                     </div>
                     <div>
-                        Gerente:
-                        <input className="input_text" type="text"/>
+                        Id Gerente:
+                        <input id="maneger_id_vendedor_cadastro" className="input_text" type="number"/>
                     </div>
                     <div>
                         Senha:
-                        <input className="input_text" type="text"/>
+                        <input id="senha_vendedor_cadastro" className="input_text" type="text"/>
                     </div>
                     <button 
                         className="bt_cad_vend" 
@@ -66,7 +79,8 @@ export const CadVendePage = () => {
 
                         verticalAlign: "center"
                         }} onClick={()=>{ 
-                            history.push('/') 
+                            // history.push('/')
+                            register_vendedor()
                         }}>
                         Cadastrar
                     </button>

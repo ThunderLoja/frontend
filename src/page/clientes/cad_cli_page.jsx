@@ -4,7 +4,15 @@ import React from "react";
 import fundo from "../../data/fundo.png"
 import { Route, Link } from 'react-router-dom'
 
+import { cliente_post_new } from "../../actions/cliente"
+
 export const CadCliPage = () => {
+    const register_cliente = () => {
+        const name = document.getElementById("nome_cliente").value
+        const cpf = document.getElementById("cpf_cliente").value
+        await cliente_post_new(name, cpf)
+    }
+    
     return (
     <Route render ={({history})=>(
         <div className="home_bg">
@@ -35,11 +43,11 @@ export const CadCliPage = () => {
                    
                     <div >
                         Nome:
-                        <input className="input_text" type="text"/>
+                        <input className="nome_cliente" type="text"/>
                     </div>
                     <div>
                         C.P.F.:
-                        <input className="input_text" type="text"/>
+                        <input className="cpf_cliente" type="text"/>
                     </div>
                    
                     <button 
@@ -48,7 +56,8 @@ export const CadCliPage = () => {
 
                         verticalAlign: "center"
                         }} onClick={()=>{ 
-                            history.push('/') 
+                            /*history.push('/') */
+                            register_cliente()
                         }}>
                         Cadastrar
                     </button>

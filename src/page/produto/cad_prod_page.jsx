@@ -3,8 +3,17 @@ import React from "react";
 // import "./vend.css"
 import fundo from "../../data/fundo.png"
 import { Route, Link } from 'react-router-dom'
+import { produto_post_new } from "../../actions/produto"
 
 export const CadProdPage = () => {
+    const register_produto = () => {
+        const name = document.getElementById("name_prod_cadastro").value
+        const valor = document.getElementById("valor_prod_cadastro").value
+        const desc = document.getElementById("desc_prod_cadastro").value
+        const categoria = document.getElementById("categoria_prod_cadastro").value
+        await produto_post_new(name, valor, desc, categoria)
+    }
+
     return (
     <Route render ={({history})=>(
         <div className="home_bg">
@@ -35,19 +44,19 @@ export const CadProdPage = () => {
                     
                     <div >
                         Nome:
-                        <input className="input_text" type="text"/>
+                        <input className="name_prod_cadastro" type="text"/>
                     </div>
                     <div>
                         Valor:
-                        <input className="input_text" type="text"/>
+                        <input className="valor_prod_cadastro" type="text"/>
                     </div>
                     <div>
                         Descrição:
-                        <input className="input_text" type="text"/>
+                        <input className="desc_prod_cadastro" type="text"/>
                     </div>
                     <div>
                         Categoria:
-                        <input className="input_text" type="text"/>
+                        <input className="categoria_prod_cadastro" type="text"/>
                     </div>
                     
                     <button 
@@ -56,7 +65,8 @@ export const CadProdPage = () => {
 
                         verticalAlign: "center"
                         }} onClick={()=>{ 
-                            history.push('/') 
+                            /*history.push('/')*/
+                            register_produto() 
                         }}>
                         Cadastrar
                     </button>
