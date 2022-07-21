@@ -95,7 +95,8 @@ export const Home = () => (
             <button 
                 class="bt_title" 
                 style={{
-                verticalAlign: "center"
+                verticalAlign: "center",
+                margin: "3px"
                 }}>
                     Produtos
                 </button>
@@ -103,7 +104,8 @@ export const Home = () => (
                 <button 
                 class="bt" 
                 style={{
-                verticalAlign: "center"
+                verticalAlign: "center",
+                margin: "3px"
                 }} onClick={()=>{ 
 
                     history.push('/cad_prod') 
@@ -114,7 +116,8 @@ export const Home = () => (
                 <button 
                 class="bt" 
                 style={{
-                verticalAlign: "center"
+                verticalAlign: "center",
+                margin: "3px"
                 }} onClick={()=>{ 
 
                     history.push('/con_prod') 
@@ -125,7 +128,8 @@ export const Home = () => (
                 <button 
                 class="bt" 
                 style={{
-                verticalAlign: "center"
+                verticalAlign: "center",
+                margin: "3px"
                 }} onClick={()=>{ 
 
                     history.push('/mod_prod') 

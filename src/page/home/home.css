@@ -91,7 +91,6 @@ body {
       justify-content: space-between;
       padding-bottom: 20%;
       flex:1;
-
     }
 
     .coluna_clientes{
@@ -108,7 +107,7 @@ body {
       border-radius: 30;
       font-size: 20px;
       width: 60%;
-      height: 30%;
+      height: 60px;
       color: white;
       background-Color: #011749;
     }
@@ -116,7 +115,7 @@ body {
     .bt_title{
       border-radius: 30;
       width: 60%;
-      height: 30%;
+      height: 60px;
       font-size: 25px;
       color: yellow;
       background-Color: #011749;
@@ -125,8 +124,8 @@ body {
     .bt_logout {
 
       border-radius: 30;
-      width: 5%;
-      height: 30%;
+      width: 10%;
+      height: 40%;
       font-size: 10px;
       color: yellow;
       background-Color: red;
