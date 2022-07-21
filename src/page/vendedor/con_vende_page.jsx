@@ -51,28 +51,34 @@ export const ConVendePage = () => {
                         <TableHead>
                             <TableRow>
                                 <TableCell>
-                                    nome
+                                    ID
                                 </TableCell>
                                 <TableCell>
-                                    cpf
+                                    Nome
                                 </TableCell>
                                 <TableCell>
-                                    salario
+                                    CPF
                                 </TableCell>
                                 <TableCell>
-                                    Admissão
+                                    Salário
+                                </TableCell>
+                                <TableCell>
+                                    Data de admissão
                                 </TableCell>  
                                 <TableCell>
                                     Ativo?
                                 </TableCell>  
                                 <TableCell>
-                                    Id do gerente
+                                    ID do Gerente
                                 </TableCell>                            
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {vendedores.map((i) => (
                                 <TableRow key={i.id}>
+                                    <TableCell>
+                                        {i.id}
+                                    </TableCell>
                                     <TableCell>
                                         {i.name}
                                     </TableCell>
