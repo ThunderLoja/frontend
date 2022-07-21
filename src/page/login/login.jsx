@@ -2,15 +2,19 @@ import React from "react";
 import "./login.css";
 import logo from "../../data/logo.png"
 import { Route } from 'react-router-dom'
-// import { user_put_login } from "../../actions/login"
+import { user_put_login } from "../../actions/login"
 
 export const LoginPage = () => {
-  const authentication_request = () => {
+  const authentication_request = async () => {
     const id = document.getElementById("id_login_page").value
     const key = document.getElementById("key_login_page").value
+    const values = await user_put_login(parseInt(id), key).then((response) => {
+      return response
+    })
     console.log(typeof(parseInt(id)))
     console.log(key)
-    // console.log(user_put_login(parseInt(id), key))
+    console.log(values)
+    return values == null ? false : true;
 
   }
   return (
@@ -46,16 +50,17 @@ export const LoginPage = () => {
             width: 80,
             height:50,
             verticalAlign: "center"
-            }} onClick={()=>{ 
+            }} onClick={async ()=>{ 
 
-              authentication_request()
-              //if(autenticado){
-                history.push('/') 
-              //} else {
-                //mensagem de erro
-              //}
-              
-              }}>
+                is_login_valid = await authentication_request()
+                if(is_login_valid){
+                  history.push('/') 
+                } else {
+                  // mensagem de erro
+                }
+                
+                }
+              }>
               Entrar
           </button>
           )
